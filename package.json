@@ -50,10 +50,11 @@
     "webpack": "2.2.1"
   },
   "dependencies": {
-    "react-native": "^0.45.0"
+    "react-native": "^0.45.0",
+    "immutable": "3.8.1"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
+    "react": "^0.14.0 || ^15.0.0 || ^0.16.0",
     "redux": "^3.0.0"
   }
 }
