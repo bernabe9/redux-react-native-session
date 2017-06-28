@@ -1,5 +1,5 @@
 import { USER_SESSION, USER_DATA } from './constants';
-import { asyncStorage } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import {
   getSessionSuccess,
   getSessionError,
@@ -44,17 +44,17 @@ export class sessionService {
 
   static saveSession(session) {
     return new Promise((resolve) => {
-      asyncStorage.setItem(USER_SESSION, JSON.stringify(session))
+      AsyncStorage.setItem(USER_SESSION, JSON.stringify(session))
       .then(() => {
         instance.store.dispatch(getSessionSuccess());
         resolve();
-      })
-    })
+      });
+    });
   }
 
   static loadSession() {
     return new Promise((resolve, reject) => {
-      asyncStorage.getItem(USER_SESSION)
+      AsyncStorage.getItem(USER_SESSION)
       .then((currentSession) => {
         if (currentSession) {
           resolve(JSON.parse(currentSession));
@@ -63,28 +63,28 @@ export class sessionService {
         }
       })
       .catch(err => reject(err));
-    })
+    });
   }
 
   static deleteSession() {
-    return asyncStorage.removeItem(USER_SESSION).then(() => {
+    return AsyncStorage.removeItem(USER_SESSION).then(() => {
       instance.store.dispatch(getSessionError());
     });
   }
 
   static saveUser(user) {
     return new Promise((resolve) => {
-      asyncStorage.setItem(USER_DATA, JSON.stringify(user))
+      AsyncStorage.setItem(USER_DATA, JSON.stringify(user))
       .then(() => {
         instance.store.dispatch(getUserSessionSuccess(user));
         resolve();
-      })
-    })
+      });
+    });
   }
 
   static loadUser() {
     return new Promise((resolve, reject) => {
-      asyncStorage.getItem(USER_DATA)
+      AsyncStorage.getItem(USER_DATA)
       .then((currentUser) => {
         if (currentUser) {
           resolve(JSON.stringify(currentUser));
@@ -93,11 +93,11 @@ export class sessionService {
         }
       })
       .catch(err => reject(err));
-    })
+    });
   }
 
   static deleteUser() {
-    return asyncStorage.removeItem(USER_DATA).then(() => {
+    return AsyncStorage.removeItem(USER_DATA).then(() => {
       instance.store.dispatch(getUserSessionError());
     });
   }
