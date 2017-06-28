@@ -2,12 +2,17 @@ import {
   GET_SESSION_SUCCESS,
   GET_SESSION_ERROR,
   GET_USER_SESSION_SUCCESS,
-  GET_USER_SESSION_ERROR
+  GET_USER_SESSION_ERROR,
+  SESSION_CHECKED_SUCCESS,
+  USER_CHECKED_SUCCESS,
+  SESSION_CHECKED_ERROR,
+  USER_CHECKED_ERROR
 } from './actionTypes';
 
 export const initialState = {
   authenticated: false,
-  checked: false,
+  sessionChecked: false,
+  userChecked: false,
   user: {}
 };
 
@@ -15,16 +20,14 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_SESSION_SUCCESS: {
       return {
-        user: { ...state.user },
-        authenticated: true,
-        checked: true
+        ...state,
+        authenticated: true
       };
     }
     case GET_SESSION_ERROR: {
       return {
-        user: { ...state.user },
-        authenticated: false,
-        checked: true
+        ...state,
+        authenticated: false
       };
     }
     case GET_USER_SESSION_SUCCESS: {
@@ -32,6 +35,14 @@ const reducer = (state = initialState, action) => {
     }
     case GET_USER_SESSION_ERROR: {
       return { ...state, user: {} };
+    }
+    case SESSION_CHECKED_SUCCESS:
+    case SESSION_CHECKED_ERROR: {
+      return { ...state, sessionChecked: true };
+    }
+    case USER_CHECKED_SUCCESS:
+    case USER_CHECKED_ERROR: {
+      return { ...state, userChecked: true };
     }
     default: {
       return state;

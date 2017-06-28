@@ -2,7 +2,11 @@ import {
   GET_SESSION_SUCCESS,
   GET_SESSION_ERROR,
   GET_USER_SESSION_SUCCESS,
-  GET_USER_SESSION_ERROR
+  GET_USER_SESSION_ERROR,
+  SESSION_CHECKED_SUCCESS,
+  USER_CHECKED_SUCCESS,
+  SESSION_CHECKED_ERROR,
+  USER_CHECKED_ERROR
 } from './actionTypes';
 
 export const getSessionSuccess = () => {
@@ -22,4 +26,23 @@ export const getUserSessionSuccess = (user) => {
 
 export const getUserSessionError = () => {
   return { type: GET_USER_SESSION_ERROR };
+};
+
+export const sessionCheckedSuccess = () => {
+  return { type: SESSION_CHECKED_SUCCESS };
+};
+
+export const userCheckedSuccess = (user) => {
+  return {
+    user,
+    type: USER_CHECKED_SUCCESS
+  };
+};
+
+export const sessionCheckedError = () => {
+  return { type: SESSION_CHECKED_ERROR };
+};
+
+export const userCheckedError = () => {
+  return { type: USER_CHECKED_ERROR };
 };

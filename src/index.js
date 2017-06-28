@@ -4,7 +4,11 @@ import {
   getSessionSuccess,
   getSessionError,
   getUserSessionSuccess,
-  getUserSessionError
+  getUserSessionError,
+  sessionCheckedSuccess,
+  userCheckedSuccess,
+  sessionCheckedError,
+  userCheckedError
 } from './actions';
 import reducer from './reducer';
 
@@ -33,11 +37,15 @@ export class sessionService {
     return sessionService.loadSession()
     .then(() => {
       instance.store.dispatch(getSessionSuccess());
+      instance.store.dispatch(sessionCheckedSuccess());
       sessionService.loadUser().then((user) => {
         instance.store.dispatch(getUserSessionSuccess(user));
+        instance.store.dispatch(userCheckedSuccess(user));
       });
     })
     .catch(() => {
+      instance.store.dispatch(sessionCheckedError());
+      instance.store.dispatch(userCheckedError());
       instance.store.dispatch(getSessionError());
     });
   }
