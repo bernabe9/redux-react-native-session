@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bernabe9/redux-react-session.git"
+    "url": "git+https://github.com/bernabe9/redux-react-native-session"
   },
   "keywords": [
     "redux",
@@ -54,7 +54,7 @@
   },
   "peerDependencies": {
     "react-native": ">=0.44.0",
-    "react": "^0.14.0 || >=15.0.0",
+    "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0",
     "redux": "^3.0.0"
   }
 }
