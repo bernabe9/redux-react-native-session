@@ -1,6 +1,6 @@
 # Redux React Native Session
 
-[![NPM version](https://img.shields.io/npm/v/redux-react-session.svg?style=flat)](https://npmjs.org/package/redux-react-native-session)
+[![NPM version](https://img.shields.io/npm/v/redux-react-native-session.svg?style=flat)](https://npmjs.org/package/redux-react-native-session)
 [![Dependency Status](https://img.shields.io/david/bernabe9/redux-react-native-session.svg)](https://david-dm.org/bernabe9/redux-react-native-session)
 
 Keep your session sync with AsyncStorage and Redux :key:
