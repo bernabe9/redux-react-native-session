@@ -21,7 +21,7 @@ npm:
 - Add the session reducer:
 ```javascript
 import { combineReducers } from 'redux';
-import { sessionReducer } from 'redux-react-session';
+import { sessionReducer } from 'redux-react-native-session';
 
 const reducers = {
   // ... your other reducers here ...
@@ -32,7 +32,7 @@ const reducer = combineReducers(reducers);
 - Initiate the session service:
 ```javascript
 import { createStore } from 'redux';
-import { sessionService } from 'redux-react-session';
+import { sessionService } from 'redux-react-native-session';
 
 const store = createStore(reducer)
 
@@ -73,3 +73,19 @@ Returns the current user if exists
 
 ### deleteUser : Promise
 Deletes the current user from the AsyncStorage and the Redux store
+
+## Immutable JS
+Usage of `redux-react-native-session` with an immutable store is really simple.
+Instead of the `sessionReducer` import the `sessionImmutableReducer`, as the following example:
+
+- Add the session reducer:
+```javascript
+import { combineReducers } from 'redux';
+import { sessionImmutableReducer as session } from 'redux-react-native-session';
+
+const reducers = {
+  // ... your other reducers here ...
+  session
+};
+const reducer = combineReducers(reducers);
+```
