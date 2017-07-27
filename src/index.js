@@ -96,7 +96,7 @@ export class sessionService {
       AsyncStorage.getItem(USER_DATA)
       .then((currentUser) => {
         if (currentUser) {
-          resolve(JSON.stringify(currentUser));
+          resolve(JSON.parse(currentUser));
         } else {
           reject('User not found');
         }
