@@ -27,14 +27,19 @@ const reducer = (state = initialState, action) => {
     case GET_SESSION_ERROR: {
       return {
         ...state,
-        authenticated: false
+        authenticated: false,
+        sessionChecked: false
       };
     }
     case GET_USER_SESSION_SUCCESS: {
       return { ...state, user: action.user };
     }
     case GET_USER_SESSION_ERROR: {
-      return { ...state, user: {} };
+      return {
+        ...state,
+        user: {},
+        userChecked: false
+      };
     }
     case SESSION_CHECKED_SUCCESS:
     case SESSION_CHECKED_ERROR: {

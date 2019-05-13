@@ -42,7 +42,8 @@ export class sessionService {
       sessionService.loadUser().then((user) => {
         instance.store.dispatch(getUserSessionSuccess(user));
         instance.store.dispatch(userCheckedSuccess(user));
-      });
+      })
+      .catch(() => instance.store.dispatch(userCheckedError()));
     })
     .catch(() => {
       instance.store.dispatch(sessionCheckedError());

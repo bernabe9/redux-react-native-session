@@ -23,13 +23,19 @@ const immutableReducer = (state = initialState, action) => {
       return state.set('authenticated', true);
     }
     case GET_SESSION_ERROR: {
-      return state.set('authenticated', false);
+      return state.merge({
+        authenticated: false,
+        sessionChecked: false
+      });
     }
     case GET_USER_SESSION_SUCCESS: {
       return state.set('user', Immutable.fromJS(action.user));
     }
     case GET_USER_SESSION_ERROR: {
-      return state.set('user', Immutable.Map());
+      return state.merge({
+        user: Immutable.Map(),
+        userChecked: false
+      });
     }
     case SESSION_CHECKED_SUCCESS:
     case SESSION_CHECKED_ERROR: {
