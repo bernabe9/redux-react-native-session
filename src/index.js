@@ -1,5 +1,5 @@
 import { USER_SESSION, USER_DATA } from './constants';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import {
   getSessionSuccess,
   getSessionError,

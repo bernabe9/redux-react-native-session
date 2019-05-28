@@ -8,13 +8,20 @@ Keep your session sync with AsyncStorage and Redux :key:
 Redux React Native Session provides an simple API that allows to manage sessions through the app.
 
 ## Installation
+
+* Install:
+
 yarn:
 
 `yarn add redux-react-native-session`
 
 npm:
 
-`npm install redux-react-native-session --save`
+`npm install redux-react-native-session`
+
+* Link:
+
+`react-native link @react-native-community/async-storage`
 
 ## Usage
 
