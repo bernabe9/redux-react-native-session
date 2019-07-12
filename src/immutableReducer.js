@@ -13,6 +13,7 @@ import {
 export const initialState = Immutable.fromJS({
   authenticated: false,
   sessionChecked: false,
+  session: {},
   userChecked: false,
   user: {}
 });
@@ -20,10 +21,16 @@ export const initialState = Immutable.fromJS({
 const immutableReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_SESSION_SUCCESS: {
-      return state.set('authenticated', true);
+      return state.merge({
+        authenticated: true,
+        session: Immutable.fromJS(action.session)
+      });
     }
     case GET_SESSION_ERROR: {
-      return state.set('authenticated', false);
+      return state.merge({
+        authenticated: false,
+        session: Immutable.Map()
+      });
     }
     case GET_USER_SESSION_SUCCESS: {
       return state.set('user', Immutable.fromJS(action.user));
