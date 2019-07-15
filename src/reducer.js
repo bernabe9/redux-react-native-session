@@ -12,6 +12,7 @@ import {
 export const initialState = {
   authenticated: false,
   sessionChecked: false,
+  session: {},
   userChecked: false,
   user: {}
 };
@@ -21,13 +22,15 @@ const reducer = (state = initialState, action) => {
     case GET_SESSION_SUCCESS: {
       return {
         ...state,
-        authenticated: true
+        authenticated: true,
+        session: action.session
       };
     }
     case GET_SESSION_ERROR: {
       return {
         ...state,
-        authenticated: false
+        authenticated: false,
+        session: {}
       };
     }
     case GET_USER_SESSION_SUCCESS: {

@@ -9,8 +9,11 @@ import {
   USER_CHECKED_ERROR
 } from './actionTypes';
 
-export const getSessionSuccess = () => {
-  return { type: GET_SESSION_SUCCESS };
+export const getSessionSuccess = (session) => {
+  return {
+    session,
+    type: GET_SESSION_SUCCESS
+  };
 };
 
 export const getSessionError = () => {

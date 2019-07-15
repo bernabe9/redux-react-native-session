@@ -36,13 +36,14 @@ export class sessionService {
 
   static refreshFromLocalStorage() {
     return sessionService.loadSession()
-    .then(() => {
-      instance.store.dispatch(getSessionSuccess());
+    .then((session) => {
+      instance.store.dispatch(getSessionSuccess(session));
       instance.store.dispatch(sessionCheckedSuccess());
       sessionService.loadUser().then((user) => {
         instance.store.dispatch(getUserSessionSuccess(user));
         instance.store.dispatch(userCheckedSuccess(user));
-      });
+      })
+      .catch(() => instance.store.dispatch(userCheckedError()));
     })
     .catch(() => {
       instance.store.dispatch(sessionCheckedError());
@@ -55,7 +56,7 @@ export class sessionService {
     return new Promise((resolve) => {
       AsyncStorage.setItem(USER_SESSION, JSON.stringify(session))
       .then(() => {
-        instance.store.dispatch(getSessionSuccess());
+        instance.store.dispatch(getSessionSuccess(session));
         resolve();
       });
     });
